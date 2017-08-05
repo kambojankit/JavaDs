@@ -1,12 +1,9 @@
-package com.techarha.training.ds.linked_list;
+package com.techarha.training.ds.list;
 
-import com.techarha.training.ds.linked_list.LinkedList;
-import com.techarha.training.ds.linked_list.Node;
-
-public class LinkedListTest<T> {
-
-    public static LinkedList getSampleList() {
-        LinkedList<String> list = new LinkedList<String>();
+public class LinkedListTest {
+    //TODO make junit test cases to setup overall repo
+    public static List getSampleList() {
+        List<String> list = new LinkedList<String>();
 
         list.addToEnd("A");
         list.addToEnd("B");
@@ -53,16 +50,18 @@ public class LinkedListTest<T> {
     }
 
     public static void printRecursive(Node node) {
-        if(node.getLink() == null) {
+        if(node.getNext() == null) {
             System.out.print(node.getData()+ " ");
             return;
         }else {
-            printRecursive(node.getLink());
+            printRecursive(node.getNext());
             if(node.getData() != null ) System.out.print(node.getData()+ " ");
         }
     }
 
-    public static void reverseRecursiveTest(LinkedList list) {
+    public static void reverseRecursiveTest(List list) {
+        //TODO prepare a sample list and then test recursion
+
         list.reverseListRecursive(list.getHead());
         System.out.println(list.toString());
     }

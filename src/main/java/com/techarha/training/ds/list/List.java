@@ -1,4 +1,4 @@
-package com.techarha.training.ds.linked_list;
+package com.techarha.training.ds.list;
 
 public interface List<T> {
     Node<T> getHead();

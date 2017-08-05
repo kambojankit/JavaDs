@@ -1,8 +1,8 @@
-package com.techarha.training.ds.linked_list;
+package com.techarha.training.ds.list;
 
 public class Node<T>{
     private T data;
-    private Node<T> link;
+    private Node<T> next;
 
     public T getData() {
         return data;
@@ -12,12 +12,12 @@ public class Node<T>{
         this.data = data;
     }
 
-    public Node<T> getLink() {
-        return link;
+    public Node<T> getNext() {
+        return next;
     }
 
-    public void setLink(Node<T> link) {
-        this.link = link;
+    public void setNext(Node<T> next) {
+        this.next = next;
     }
 
     @Override

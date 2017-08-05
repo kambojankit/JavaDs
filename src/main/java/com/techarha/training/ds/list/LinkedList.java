@@ -1,4 +1,4 @@
-package com.techarha.training.ds.linked_list;
+package com.techarha.training.ds.list;
 
 import com.techarha.training.ds.exceptions.IndexOutOfBoundException;
 
@@ -8,7 +8,7 @@ public class LinkedList<T> implements List<T>{
 
     public LinkedList(){
         head = new Node<T>();
-        head.setLink(null);
+        head.setNext(null);
         head.setData(null);
     }
 
@@ -26,9 +26,9 @@ public class LinkedList<T> implements List<T>{
         Node<T> temp = new Node<>();
 
         temp.setData(data);
-        temp.setLink(head.getLink());
+        temp.setNext(head.getNext());
 
-        head.setLink(temp);
+        head.setNext(temp);
     }
 
 
@@ -41,11 +41,11 @@ public class LinkedList<T> implements List<T>{
         if(getSize() < 1) {
             throw new IndexOutOfBoundException("Cannot remove Node from Empty List");
         }
-        Node<T> temp = this.head.getLink();
+        Node<T> temp = this.head.getNext();
 
-        this.head.setLink(temp.getLink());
+        this.head.setNext(temp.getNext());
         temp.setData(null);
-        temp.setLink(null);
+        temp.setNext(null);
     }
 
     /**
@@ -57,14 +57,14 @@ public class LinkedList<T> implements List<T>{
         Node<T> dataNode = new Node<>();
 
         dataNode.setData(data);
-        dataNode.setLink(null);
+        dataNode.setNext(null);
 
         Node<T> tempHead = this.head;
-        while(tempHead.getLink() != null) {
-            tempHead = tempHead.getLink();
+        while(tempHead.getNext() != null) {
+            tempHead = tempHead.getNext();
         }
 
-        tempHead.setLink(dataNode);
+        tempHead.setNext(dataNode);
     }
 
     /**
@@ -76,16 +76,16 @@ public class LinkedList<T> implements List<T>{
         Node<T> current = this.head;
 
         Node<T> previous = null;
-        while(current.getLink() != null){
+        while(current.getNext() != null){
             previous = current;
-            current = current.getLink();
+            current = current.getNext();
         }
 
         //remove current and make previous as last node
         current.setData(null);
-        current.setLink(null);
+        current.setNext(null);
 
-        previous.setLink(null);
+        previous.setNext(null);
     }
 
     /**
@@ -113,13 +113,13 @@ public class LinkedList<T> implements List<T>{
 
             int position= 0;
             Node<T> tempData = this.head;
-            while(tempData.getLink() != null){
-                tempData = tempData.getLink();
+            while(tempData.getNext() != null){
+                tempData = tempData.getNext();
                 if(position == index - 1 ) {
                     //Pointing newly added node, to the one pointed to by element at position = index-1
-                    dataNode.setLink(tempData.getLink());
+                    dataNode.setNext(tempData.getNext());
 
-                    tempData.setLink(dataNode);
+                    tempData.setNext(dataNode);
                     break;
                 }
                 position++;
@@ -149,9 +149,9 @@ public class LinkedList<T> implements List<T>{
 
             int position = 0;
             Node<T> previous = null;
-            while(current.getLink() != null){
+            while(current.getNext() != null){
                 previous = current;
-                current = current.getLink();
+                current = current.getNext();
                 if(position == index) {
                     break;
                 }
@@ -159,10 +159,10 @@ public class LinkedList<T> implements List<T>{
             }
 
             //remove current and make previous Node point to the node current Node links to.
-            previous.setLink(current.getLink());
+            previous.setNext(current.getNext());
 
             current.setData(null);
-            current.setLink(null);
+            current.setNext(null);
 
         }else {
             throw new IndexOutOfBoundException("Cannot delete Node at the provided location");
@@ -175,35 +175,35 @@ public class LinkedList<T> implements List<T>{
             throw new IndexOutOfBoundException("Cannot reverse an empty list");
         }
 
-        Node<T> current = this.head.getLink();
+        Node<T> current = this.head.getNext();
         Node<T> previous = null;
 
         while(current != null) {
-//            current = current.getLink();
-            Node<T> next = current.getLink();
-            current.setLink(previous);
+//            current = current.getNext();
+            Node<T> next = current.getNext();
+            current.setNext(previous);
             previous = current;
 
             current = next;
         }
 
-        this.head.setLink(previous);
+        this.head.setNext(previous);
     }
 
     @Override
     public void reverseListRecursive(Node node) {
-        if(node.getLink() == null) {
+        if(node.getNext() == null) {
             this.head = new Node<>();
-            this.head.setLink(node);
+            this.head.setNext(node);
             return;
         }else {
-            reverseListRecursive(node.getLink());
-            Node<T> next = node.getLink();
+            reverseListRecursive(node.getNext());
+            Node<T> next = node.getNext();
             if(node.getData() == null){
-                next.setLink(null);
+                next.setNext(null);
             }else {
-                node.setLink(null);
-                next.setLink(node);
+                node.setNext(null);
+                next.setNext(node);
             }
         }
     }
@@ -216,8 +216,8 @@ public class LinkedList<T> implements List<T>{
     public Integer getSize() {
         Integer size = 0;
         Node<T> tempNode = this.head;
-        while(tempNode.getLink() != null){
-            tempNode = tempNode.getLink();
+        while(tempNode.getNext() != null){
+            tempNode = tempNode.getNext();
             size++;
         }
         return size;
@@ -227,8 +227,8 @@ public class LinkedList<T> implements List<T>{
     public String toString() {
         String listStr = "";
         Node<T> tempNode = this.head;
-        while(tempNode.getLink() != null){
-            tempNode = tempNode.getLink();
+        while(tempNode.getNext() != null){
+            tempNode = tempNode.getNext();
             listStr += tempNode.getData() + " ";
         }
         return listStr;
