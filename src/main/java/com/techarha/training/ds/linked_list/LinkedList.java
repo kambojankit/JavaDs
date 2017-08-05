@@ -2,16 +2,17 @@ package com.techarha.training.ds.linked_list;
 
 import com.techarha.training.ds.exceptions.IndexOutOfBoundException;
 
-public class LinkedList<T>{
+public class LinkedList<T> implements List<T>{
     Node<T> head = new Node<>();
 
 
     public LinkedList(){
-        head = new Node<>();
+        head = new Node<T>();
         head.setLink(null);
         head.setData(null);
     }
 
+    @Override
     public Node<T> getHead(){
         return this.head;
     }
@@ -20,6 +21,7 @@ public class LinkedList<T>{
      * The operation has a complexity of O(1)
      * @param data
      */
+    @Override
     public void addToFront(T data){
         Node<T> temp = new Node<>();
 
@@ -34,6 +36,7 @@ public class LinkedList<T>{
      * Removes one Node from front of the linked list
      * The operation has a complexity of O(1)
      */
+    @Override
     public void removeFromFront(){
         if(getSize() < 1) {
             throw new IndexOutOfBoundException("Cannot remove Node from Empty List");
@@ -49,6 +52,7 @@ public class LinkedList<T>{
      * The operation has a complexity of O(n), where n is number of elements in the list
      * @param data
      */
+    @Override
     public void addToEnd(T data){
         Node<T> dataNode = new Node<>();
 
@@ -67,6 +71,7 @@ public class LinkedList<T>{
      * Removed a Node from End of the list
      * The operation has a complexity of O(n)
      */
+    @Override
     public void removeFromEnd(){
         Node<T> current = this.head;
 
@@ -90,6 +95,7 @@ public class LinkedList<T>{
      * @param data
      * @param index
      */
+    @Override
     public void insertAt(T data, int index) {
         if(index > -1 && index <= getSize()) {
 
@@ -102,7 +108,7 @@ public class LinkedList<T>{
                 return;
             }
 
-            Node<T> dataNode = new Node<>();
+            Node<T> dataNode = new Node<T>();
             dataNode.setData(data);
 
             int position= 0;
@@ -128,6 +134,7 @@ public class LinkedList<T>{
      * The complexity of the operation is O(n)
      * @param index
      */
+    @Override
     public void removeAt(int index) {
         if(index > -1 && index < getSize()) {
             if(index == 0) {
@@ -162,6 +169,7 @@ public class LinkedList<T>{
         }
     }
 
+    @Override
     public void reverseList() {
         if(getSize() < 1) {
             throw new IndexOutOfBoundException("Cannot reverse an empty list");
@@ -182,6 +190,7 @@ public class LinkedList<T>{
         this.head.setLink(previous);
     }
 
+    @Override
     public void reverseListRecursive(Node node) {
         if(node.getLink() == null) {
             this.head = new Node<>();
@@ -203,6 +212,7 @@ public class LinkedList<T>{
      * The size is the number of elements present in the Linked List
      * @return
      */
+    @Override
     public Integer getSize() {
         Integer size = 0;
         Node<T> tempNode = this.head;

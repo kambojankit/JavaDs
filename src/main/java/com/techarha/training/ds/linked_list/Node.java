@@ -1,8 +1,8 @@
 package com.techarha.training.ds.linked_list;
 
 public class Node<T>{
-    T data;
-    Node<T> link;
+    private T data;
+    private Node<T> link;
 
     public T getData() {
         return data;
