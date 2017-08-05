@@ -1,7 +1,6 @@
 package com.techarha.training.ds;
 
 import com.techarha.training.ds.list.DoubleLinkedListTest;
-import com.techarha.training.ds.list.LinkedList;
 import com.techarha.training.ds.list.LinkedListTest;
 import com.techarha.training.ds.list.List;
 import com.techarha.training.ds.stack.StackTest;
@@ -33,7 +32,33 @@ public class TestExecutor {
 //        StackTest.basicGenericArrayTest();
 //        StackTest.basicGenericLinkedListStackTest();
 
-        LinkedList<String> list = LinkedListTest.getSampleLinkedList();
-        StackTest.reverseLinkedList(list);
+//        LinkedList<String> list = LinkedListTest.getSampleLinkedList();
+//        StackTest.reverseLinkedList(list);
+
+        String testParen_1 = "<(}(><[})]["; // 0
+        String testParen_2 = "<(}(><[})[]"; // 1
+        String testParen_3 = "<(}(><[})[-=-=-==](){}<>"; // 4
+        String testParen_4 = "{ () [ { < > } < }"; // 3
+        String testParen_5 = "{ () [ { < > } < } > [] ()"; // 5
+        String testParen_6 = "{ () [ { < > } ] }"; // 5
+
+        int count_1 = StackTest.countBalancedParanthesis(testParen_1);
+        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_1)+ ", total Count is: "+ count_1);
+
+        int count_2 = StackTest.countBalancedParanthesis(testParen_2);
+        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_2)+ ", total Count is: "+ count_2);
+
+        int count_3 = StackTest.countBalancedParanthesis(testParen_3);
+        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_3)+ ", total Count is: "+ count_3);
+
+        int count_4 = StackTest.countBalancedParanthesis(testParen_4);
+        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_4)+ ", total Count is: "+ count_4);
+
+        int count_5 = StackTest.countBalancedParanthesis(testParen_5);
+        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_5)+ ", total Count is: "+ count_5);
+
+        int count_6 = StackTest.countBalancedParanthesis(testParen_6);
+        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_6)+ ", total Count is: "+ count_6);
+
     }
 }

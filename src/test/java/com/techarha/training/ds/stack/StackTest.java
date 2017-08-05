@@ -92,4 +92,116 @@ public class StackTest {
 
         System.out.println("Output: " + list);
     }
+
+    /**
+     * //TODO: Question :: Count the provided string for the balanced parenthesis.
+     */
+    public static int countBalancedParanthesis(String input) {
+        Stack<Character> stack = new GenericLinkedListStack<>();
+        int balancedCount = 0;
+        char[] charArr = input.toCharArray();
+        for(char ch : charArr) {
+            switch (ch) {
+                case '{':
+                    stack.push(ch);
+                    break;
+                case '[':
+                    stack.push(ch);
+                    break;
+                case '(':
+                    stack.push(ch);
+                    break;
+                case '<':
+                    stack.push(ch);
+                    break;
+                case '}':
+                    if(stack.top()== '{') {
+                        balancedCount++;
+                        stack.pop();
+                    } else {
+                        stack.push(ch);
+                    }
+                    break;
+                case ']':
+                    if(stack.top()== '[') {
+                        balancedCount++;
+                        stack.pop();
+                    } else {
+                        stack.push(ch);
+                    }
+                    break;
+                case ')':
+                    if(stack.top()== '(') {
+                        balancedCount++;
+                        stack.pop();
+                    } else {
+                        stack.push(ch);
+                    }
+                    break;
+                case '>':
+                    if(stack.top()== '<') {
+                        balancedCount++;
+                        stack.pop();
+                    } else {
+                        stack.push(ch);
+                    }
+                    break;
+            }
+        }
+        return balancedCount;
+    }
+
+    /**
+     * //TODO: Question :: Test if the provided string is balanced parenthesis.
+     */
+    public static boolean isBalancedParanthesis(String input) {
+        Stack<Character> stack = new GenericLinkedListStack<>();
+
+        char[] charArr = input.toCharArray();
+        for(char ch : charArr) {
+            switch (ch) {
+                case '{':
+                    stack.push(ch);
+                    break;
+                case '[':
+                    stack.push(ch);
+                    break;
+                case '(':
+                    stack.push(ch);
+                    break;
+                case '<':
+                    stack.push(ch);
+                    break;
+                case '}':
+                    if(stack.top()== '{') {
+                        stack.pop();
+                    } else {
+                        return false;
+                    }
+                    break;
+                case ']':
+                    if(stack.top()== '[') {
+                        stack.pop();
+                    } else {
+                        return false;
+                    }
+                    break;
+                case ')':
+                    if(stack.top()== '(') {
+                        stack.pop();
+                    } else {
+                        return false;
+                    }
+                    break;
+                case '>':
+                    if(stack.top()== '<') {
+                        stack.pop();
+                    } else {
+                        return false;
+                    }
+                    break;
+            }
+        }
+        return true;
+    }
 }
