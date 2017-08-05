@@ -5,10 +5,13 @@ import java.lang.reflect.Array;
 public class GenericArrayStack<T> implements Stack<T> {
 
     private T[] stack;
+    Class<T> providedClassType;
     private int position;
-    private int ARRAY_SIZE = 10 ;
+    private int ARRAY_SIZE = 2 ;
+    private int resizeFactor = 2;
 
     public GenericArrayStack(Class<T> clazz){
+        this.providedClassType = clazz;
         this.stack = (T[]) Array.newInstance(clazz, ARRAY_SIZE);
         this.position = -1;
     }
@@ -16,7 +19,7 @@ public class GenericArrayStack<T> implements Stack<T> {
     @Override
     public void push(T data) {
         if(this.position == ARRAY_SIZE -1) {
-            throw new IndexOutOfBoundsException("Stack is full");
+            this.resizeStack();
         }
 
         this.stack[++position] = data;
@@ -43,7 +46,6 @@ public class GenericArrayStack<T> implements Stack<T> {
         throw new IndexOutOfBoundsException("Stack is empty");
     }
 
-
     @Override
     public String toString() {
         String arrStr = "";
@@ -52,5 +54,22 @@ public class GenericArrayStack<T> implements Stack<T> {
             arrStr += str != null? str + " " : "";
         }
         return arrStr;
+    }
+
+    private void resizeStack() {
+        System.out.print("resizing stack..");
+        this.ARRAY_SIZE = this.ARRAY_SIZE * this.resizeFactor;
+
+        T[] updatedStack = (T[]) Array.newInstance(this.providedClassType, this.ARRAY_SIZE);
+
+        this.copyOver(updatedStack);
+    }
+
+    private void copyOver(T[] newStack) {
+        for(int i=0; i <= position; i++) {
+            newStack[i] = this.stack[i];
+        }
+
+        this.stack = newStack;
     }
 }

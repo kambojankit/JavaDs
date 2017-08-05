@@ -22,7 +22,14 @@ public class StackTest {
 
         intStack.push(120);
         intStack.push(345);
+
+        System.out.print(intStack);
+
         intStack.push(900);
+        intStack.push(2311);
+        System.out.print(intStack);
+
+        intStack.push(12);
 
         System.out.println(intStack);
 
@@ -30,6 +37,7 @@ public class StackTest {
 
         intStack.pop();
         intStack.push(800);
+        intStack.push(7878);
         System.out.println(intStack);
     }
 }
