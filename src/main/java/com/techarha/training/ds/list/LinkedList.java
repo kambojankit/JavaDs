@@ -17,6 +17,10 @@ public class LinkedList<T> implements List<T>{
         return this.head;
     }
 
+    public void setHead(Node<T> head){
+        this.head = head;
+    }
+
     /**
      * The operation has a complexity of O(1)
      * @param data

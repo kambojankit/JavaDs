@@ -3,15 +3,19 @@ package com.techarha.training.ds.list;
 public class LinkedListTest {
     //TODO make junit test cases to setup overall repo
     public static List getSampleList() {
-        List<String> list = new LinkedList<String>();
+        return getSampleLinkedList();
+    }
 
-        list.addToEnd("A");
-        list.addToEnd("B");
-        list.addToEnd("C");
-        list.addToEnd("D");
-        list.addToEnd("E");
+    public static LinkedList getSampleLinkedList() {
+        LinkedList<String> linkedList = new LinkedList<String>();
 
-        return list;
+        linkedList.addToEnd("A");
+        linkedList.addToEnd("B");
+        linkedList.addToEnd("C");
+        linkedList.addToEnd("D");
+        linkedList.addToEnd("E");
+
+        return linkedList;
     }
 
     public static void sampleRun() {

@@ -1,6 +1,7 @@
 package com.techarha.training.ds;
 
 import com.techarha.training.ds.list.DoubleLinkedListTest;
+import com.techarha.training.ds.list.LinkedList;
 import com.techarha.training.ds.list.LinkedListTest;
 import com.techarha.training.ds.list.List;
 import com.techarha.training.ds.stack.StackTest;
@@ -29,6 +30,10 @@ public class TestExecutor {
 
     public static void testStack() {
 //        StackTest.basicStringArrayTest();
-        StackTest.basicGenericArrayTest();
+//        StackTest.basicGenericArrayTest();
+//        StackTest.basicGenericLinkedListStackTest();
+
+        LinkedList<String> list = LinkedListTest.getSampleLinkedList();
+        StackTest.reverseLinkedList(list);
     }
 }
