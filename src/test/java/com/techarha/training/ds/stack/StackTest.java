@@ -1,6 +1,7 @@
 package com.techarha.training.ds.stack;
 
 import com.techarha.training.ds.list.LinkedList;
+import com.techarha.training.ds.list.List;
 import com.techarha.training.ds.list.Node;
 
 public class StackTest {
@@ -69,7 +70,7 @@ public class StackTest {
     }
 
     /**
-     * TODO Question: Reverse a linked list using stack
+     * TODO: Question:: Reverse a linked list using stack
      */
     public static void reverseLinkedList(LinkedList<String> list) {
         Stack<Node> stack = new GenericLinkedListStack<Node>();
@@ -94,7 +95,7 @@ public class StackTest {
     }
 
     /**
-     * //TODO: Question :: Count the provided string for the balanced parenthesis.
+     * TODO: Question:: Count the provided string for the balanced parenthesis.
      */
     public static int countBalancedParanthesis(String input) {
         Stack<Character> stack = new GenericLinkedListStack<>();
@@ -115,7 +116,7 @@ public class StackTest {
                     stack.push(ch);
                     break;
                 case '}':
-                    if(stack.top()== '{') {
+                    if(!stack.isEmpty() && stack.top()== '{') {
                         balancedCount++;
                         stack.pop();
                     } else {
@@ -123,7 +124,7 @@ public class StackTest {
                     }
                     break;
                 case ']':
-                    if(stack.top()== '[') {
+                    if(!stack.isEmpty() && stack.top()== '[') {
                         balancedCount++;
                         stack.pop();
                     } else {
@@ -131,7 +132,7 @@ public class StackTest {
                     }
                     break;
                 case ')':
-                    if(stack.top()== '(') {
+                    if(!stack.isEmpty() && stack.top()== '(') {
                         balancedCount++;
                         stack.pop();
                     } else {
@@ -139,7 +140,7 @@ public class StackTest {
                     }
                     break;
                 case '>':
-                    if(stack.top()== '<') {
+                    if(!stack.isEmpty() && stack.top()== '<') {
                         balancedCount++;
                         stack.pop();
                     } else {
@@ -152,7 +153,7 @@ public class StackTest {
     }
 
     /**
-     * //TODO: Question :: Test if the provided string is balanced parenthesis.
+     * TODO: Question:: Test if the provided string is balanced parenthesis.
      */
     public static boolean isBalancedParanthesis(String input) {
         Stack<Character> stack = new GenericLinkedListStack<>();
@@ -173,28 +174,28 @@ public class StackTest {
                     stack.push(ch);
                     break;
                 case '}':
-                    if(stack.top()== '{') {
+                    if(!stack.isEmpty() && stack.top()== '{') {
                         stack.pop();
                     } else {
                         return false;
                     }
                     break;
                 case ']':
-                    if(stack.top()== '[') {
+                    if(!stack.isEmpty() && stack.top()== '[') {
                         stack.pop();
                     } else {
                         return false;
                     }
                     break;
                 case ')':
-                    if(stack.top()== '(') {
+                    if(!stack.isEmpty() && stack.top()== '(') {
                         stack.pop();
                     } else {
                         return false;
                     }
                     break;
                 case '>':
-                    if(stack.top()== '<') {
+                    if(!stack.isEmpty() && stack.top()== '<') {
                         stack.pop();
                     } else {
                         return false;
@@ -203,5 +204,80 @@ public class StackTest {
             }
         }
         return true;
+    }
+
+    /**
+     * TODO: Question:: Write code to convert Infix expression (without parenthesis)provided in a string to postfix.
+     *
+     */
+    public static String infixToPostfix(String input) {
+        //TODO 1. handle spaces in the input expression
+        //TODO 2. handle tokenisation of operands, for example to handle 54+2 (Note: current implementation handles 54 as 5 and 4 separately.
+        char[] expression = input.toCharArray();
+        List<Character> postFix = new LinkedList<>();
+        Stack<Character> stack = new GenericLinkedListStack<>();
+        for(char ch: expression) {
+            switch (ch) {
+                case '+':
+                case '-':
+                case '/':
+                case '*':
+                    if(!stack.isEmpty() && isTopHigherPrecedence(stack.top(), ch)) {
+                        while(!stack.isEmpty()) {
+                            postFix.addToFront(stack.top());
+                            stack.pop();
+                        }
+                        stack.push(ch);
+                    }else {
+                        stack.push(ch);
+                    }
+                    break;
+                default:
+                    postFix.addToFront(ch);
+            }
+        }
+        while(!stack.isEmpty()) {
+            postFix.addToFront(stack.top());
+            stack.pop();
+        }
+        postFix.reverseList();
+        return postFix.toString();
+    }
+
+    /**
+     * TODO: Question:: Write code to convert Infix expression (with parenthesis) provided in a string to postfix.
+     *
+     */
+    public static String infixToPostfixWithParen(String input) {
+        //TODO implement your code here.
+
+        return null;
+    }
+
+    private static boolean isTopHigherPrecedence(char top, char exp) {
+        boolean isHigher = false;
+        switch (top) {
+            case '+':
+                if(exp == '+' || exp == '-')
+                    isHigher = false;
+                else
+                    isHigher = true;
+            case '-':
+                if(exp == '+' || exp == '-')
+                    isHigher = false;
+                else
+                    isHigher = true;
+            case '/':
+                if(exp == '+' || exp == '-')
+                    isHigher = true;
+                else
+                    isHigher = false;
+            case '*':
+                if(exp == '+' || exp == '-')
+                    isHigher = true;
+                else
+                    isHigher = false;
+        }
+        return isHigher;
     }
 }
