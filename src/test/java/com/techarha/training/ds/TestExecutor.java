@@ -73,6 +73,7 @@ public class TestExecutor {
     }
 
     public static void testQueue() {
-        QueueTest.basicArrayTest();
+//        QueueTest.basicArrayQueueTest();
+        QueueTest.basicLinkedListQueueTest();
     }
 }
