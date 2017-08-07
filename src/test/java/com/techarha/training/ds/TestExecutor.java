@@ -5,13 +5,15 @@ import com.techarha.training.ds.list.LinkedListTest;
 import com.techarha.training.ds.list.List;
 import com.techarha.training.ds.queue.QueueTest;
 import com.techarha.training.ds.stack.StackTest;
+import com.techarha.training.ds.tree.TreeTest;
 
 public class TestExecutor {
     public static void main(String[] args) {
 //        testLinkedList();
 //        testDoubleLinkedList();
 //        testStack();
-        testQueue();
+//        testQueue();
+        testTree();
     }
 
 
@@ -73,7 +75,11 @@ public class TestExecutor {
     }
 
     public static void testQueue() {
-//        QueueTest.basicArrayQueueTest();
+        QueueTest.basicArrayQueueTest();
         QueueTest.basicLinkedListQueueTest();
+    }
+
+    public static void testTree() {
+        TreeTest.basicTest();
     }
 }
