@@ -1,4 +1,4 @@
-package com.techarha.training.ds.Trie;
+package com.techarha.training.ds.trie;
 
 public class BasicTrie {
     public static class Node {
