@@ -1,5 +1,7 @@
 package com.techarha.training.ds.list;
 
+import com.techarha.training.ds.queue.LinkedListQueue;
+
 public class LinkedListTest {
     //TODO make junit test cases to setup overall repo
     public static List getSampleList() {
@@ -68,5 +70,9 @@ public class LinkedListTest {
 
         list.reverseListRecursive(list.getHead());
         System.out.println(list.toString());
+    }
+
+    public static void testCycleInLinkedList() {
+        System.out.println(LinkedListQuestions.isListCyclic(getSampleList()));
     }
 }
