@@ -153,7 +153,7 @@ public class StackTest {
     }
 
     /**
-     * TODO: Question:: Test if the provided string is balanced parenthesis.
+     * Question:: Test if the provided string is balanced parenthesis.
      */
     public static boolean isBalancedParanthesis(String input) {
         Stack<Character> stack = new GenericLinkedListStack<>();
