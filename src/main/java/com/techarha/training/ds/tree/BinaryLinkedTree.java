@@ -3,10 +3,10 @@ package com.techarha.training.ds.tree;
 import com.techarha.training.ds.queue.LinkedListQueue;
 import com.techarha.training.ds.queue.Queue;
 
-public class LinkedTree {
+public class BinaryLinkedTree {
     BstNode<Integer> root;
 
-    public LinkedTree() {
+    public BinaryLinkedTree() {
 
     }
 
@@ -71,8 +71,8 @@ public class LinkedTree {
         return this.deleteNode(this.root, data);
     }
 
-    public LinkedTree deleteNodeIntoTree(Integer data) {
-        LinkedTree tree = new LinkedTree();
+    public BinaryLinkedTree deleteNodeIntoTree(Integer data) {
+        BinaryLinkedTree tree = new BinaryLinkedTree();
         tree.root = this.deleteNode(this.root, data);
         return tree;
     }

@@ -28,4 +28,9 @@ public class BstNode<T> {
     public void setLeft(BstNode<T> left) {
         this.left = left;
     }
+
+    @Override
+    public String toString() {
+        return this.getData().toString();
+    }
 }
