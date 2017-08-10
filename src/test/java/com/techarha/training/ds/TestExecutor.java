@@ -1,5 +1,6 @@
 package com.techarha.training.ds;
 
+import com.techarha.training.ds.graph.GraphTest;
 import com.techarha.training.ds.list.DoubleLinkedListTest;
 import com.techarha.training.ds.list.LinkedListTest;
 import com.techarha.training.ds.list.List;
@@ -14,7 +15,8 @@ public class TestExecutor {
 //        testDoubleLinkedList();
 //        testStack();
 //        testQueue();
-        testTree();
+//        testTree();
+        testGraph();
     }
 
 
@@ -96,5 +98,9 @@ public class TestExecutor {
 //        TreeTest.basicTest();
 //        TreeTest.basicArrayBinaryTreeTest();
         TreeTest.minHeapTest();
+    }
+
+    public static void testGraph() {
+        GraphTest.basicGraphMatrix();
     }
 }
