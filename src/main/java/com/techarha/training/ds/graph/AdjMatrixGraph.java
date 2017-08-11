@@ -2,7 +2,7 @@ package com.techarha.training.ds.graph;
 
 import java.util.Arrays;
 
-public class AdjMatrixGraph implements Graph {
+public class AdjMatrixGraph implements Graph<Integer> {
 
     private int NODE_COUNT=5;
     private int vertexCount=0;
@@ -57,6 +57,16 @@ public class AdjMatrixGraph implements Graph {
         }
 
         this.graphMatrixConnections[indexSource][indexDest] = 0;
+    }
+
+    @Override
+    public void breadthFirstTraversal(String data) {
+        //TODO do a BFS implementation for graph
+    }
+
+    @Override
+    public void depthFirstTraversal(String data) {
+        //TODO do a DFS implementation for graph
     }
 
     private int findNodeIndex(Integer data) {

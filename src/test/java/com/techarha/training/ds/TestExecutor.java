@@ -102,5 +102,8 @@ public class TestExecutor {
 
     public static void testGraph() {
         GraphTest.basicGraphMatrix();
+        System.out.println("=========================");
+//        GraphTest.basicGraphAdjancey();
+        GraphTest.testTopologicalSort();
     }
 }
