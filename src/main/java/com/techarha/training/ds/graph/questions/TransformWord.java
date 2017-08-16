@@ -51,6 +51,7 @@ public class TransformWord {
             if(visited.contains(current.getData())) {
                 continue;
             }
+            System.out.print(current.getData() + " -> ");
             stepCount++;
             visited.add(current.getData());
 
@@ -59,7 +60,9 @@ public class TransformWord {
             }
 
             for(Node child: current.adjList) {
-                nodeQueue.add(child);
+                if(!visited.contains(child.getData())) {
+                    nodeQueue.add(child);
+                }
             }
 
         }
@@ -75,9 +78,9 @@ public class TransformWord {
             nodeLookup.put(value, node);
         }
 
-        //Setup forward lookups
+        //Setup graph adjacency list
         for(Map.Entry<String, Node> entry: nodeLookup.entrySet()) {
-            List<String> samples = findAllNextWord(entry.getKey(), dictionary);
+            List<String> samples = findAllNextWords(entry.getKey(), dictionary);
             for (String sample: samples) {
                 if(sample != null) {
                     Node match = getNode(sample);
@@ -88,7 +91,7 @@ public class TransformWord {
 
     }
 
-    private static List<String> findAllNextWord(String word, HashSet<String> dictionary) {
+    private static List<String> findAllNextWords(String word, HashSet<String> dictionary) {
         List<String> match = new ArrayList<String>();
         char[] wordCharArr = word.toCharArray();
 
@@ -107,46 +110,6 @@ public class TransformWord {
             }
             if(count == value.length()-1) {
                 match.add(value);
-            }
-        }
-        return match;
-    }
-
-    private static String findNextWord(String word, HashSet<String> dictionary) {
-        String match = null;
-        char[] wordCharArr = word.toCharArray();
-
-        for(String value: dictionary) {
-            char[] charArr = value.toCharArray();
-            boolean[] isMatch = new boolean[value.length()];
-            for(int i = 0; i<value.length(); i++) {
-                isMatch[i] = charArr[i] == wordCharArr[i];
-            }
-
-            int count = 0;
-            for(int i = 0; i<value.length(); i++) {
-                if(isMatch[i]) {
-                    count++;
-                }
-            }
-            if(count == value.length()-1) {
-                match = value;
-                break;
-            }
-        }
-        return match;
-    }
-
-    private static String findPreviousWord(String word, HashSet<String> dictionary) {
-        String match = null;
-        char[] wordCharArr = word.toCharArray();
-
-        for(int i=0; i < word.length(); i++) {
-            char samplingChar = (char) (wordCharArr[i]-1);
-            String sample = word.replace(wordCharArr[i], samplingChar);
-            if(dictionary.contains(sample)) {
-                match = sample;
-                break;
             }
         }
         return match;
@@ -185,24 +148,43 @@ public class TransformWord {
         int stepCount = 0;
         String startNode;
         String endNode;
+
+        System.out.println("========== STEPS =========");
+
         if(dictionary.contains(startWord)) {
             startNode = startWord;
+            System.out.println(startNode + " -> ");
         }else {
-            startNode = findNextWord(startWord, dictionary);
+            List<String> temp = findAllNextWords(startWord, dictionary);
+            startNode = temp.size() > 0
+                            ? findAllNextWords(startWord, dictionary).get(0)
+                            : null;
+            System.out.print(startWord + " -> ");
             stepCount++;
         }
 
         if(dictionary.contains(endWord)) {
             endNode = endWord;
         }else {
-            endNode = findNextWord(endWord, dictionary);
-            stepCount++;
+            List<String> temp = findAllNextWords(endWord, dictionary);
+            endNode = temp.size() > 0
+                    ? findAllNextWords(endWord, dictionary).get(0)
+                    : null;
+        }
+
+        if(startNode == null || endNode == null) {
+            System.out.println(-1);
+            return;
         }
 
         int finalSteps =  traverseBFS(startNode, endNode) + stepCount;
 
+        if(!endNode.equals(endWord)) {
+            System.out.print(endWord);
+        }
+
+        System.out.println("\n==========================");
         System.out.println(finalSteps);
     }
-
 
 }
