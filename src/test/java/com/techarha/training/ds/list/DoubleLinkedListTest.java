@@ -15,7 +15,7 @@ public class DoubleLinkedListTest {
 
     public static void sampleRun() {
         List<String> list = new DoubleLinkedList<String>();
-
+        
         list.addToEnd("A");
         list.addToEnd("B");
         list.addToEnd("C");

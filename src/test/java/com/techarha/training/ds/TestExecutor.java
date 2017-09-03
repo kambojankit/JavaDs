@@ -6,6 +6,7 @@ import com.techarha.training.ds.list.LinkedListTest;
 import com.techarha.training.ds.list.List;
 import com.techarha.training.ds.queue.QueueTest;
 import com.techarha.training.ds.stack.BalanceExpressionEnhanced;
+import com.techarha.training.ds.stack.StackTest;
 import com.techarha.training.ds.tree.TreeTest;
 import sun.awt.image.ImageWatched;
 
@@ -13,10 +14,10 @@ public class TestExecutor {
     public static void main(String[] args) {
 //        testLinkedList();
 //        testDoubleLinkedList();
-//        testStack();
+        testStack();
 //        testQueue();
 //        testTree();
-        testGraph();
+//        testGraph();
     }
 
 
@@ -50,33 +51,36 @@ public class TestExecutor {
         String testParen_4 = "{ () [ { < > } < }"; // 3
         String testParen_5 = "{ () [ { < > } < } > [] ()"; // 5
         String testParen_6 = "{ () [ { < > } ] }"; // 5
-        String testParen_7 = "{()[{<>}]}"; // 5
+        String testParen_7 = "{{()[{<>}]}"; // 5
 //
-//        int count_1 = StackTest.countBalancedParanthesis(testParen_1);
-//        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_1)+ ", total Count is: "+ count_1);
-//
-//        int count_2 = StackTest.countBalancedParanthesis(testParen_2);
-//        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_2)+ ", total Count is: "+ count_2);
-//
-//        int count_3 = StackTest.countBalancedParanthesis(testParen_3);
-//        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_3)+ ", total Count is: "+ count_3);
-//
-//        int count_4 = StackTest.countBalancedParanthesis(testParen_4);
-//        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_4)+ ", total Count is: "+ count_4);
-//
-//        int count_5 = StackTest.countBalancedParanthesis(testParen_5);
-//        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_5)+ ", total Count is: "+ count_5);
-//
-//        int count_6 = StackTest.countBalancedParanthesis(testParen_6);
-//        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_6)+ ", total Count is: "+ count_6);
+        int count_1 = StackTest.countBalancedParanthesis(testParen_1);
+        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_1)+ ", total Count is: "+ count_1);
 
-        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_1));
-        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_2));
-        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_3));
-        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_4));
-        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_5));
-        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_6));
-        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_7));
+        int count_2 = StackTest.countBalancedParanthesis(testParen_2);
+        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_2)+ ", total Count is: "+ count_2);
+
+        int count_3 = StackTest.countBalancedParanthesis(testParen_3);
+        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_3)+ ", total Count is: "+ count_3);
+
+        int count_4 = StackTest.countBalancedParanthesis(testParen_4);
+        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_4)+ ", total Count is: "+ count_4);
+
+        int count_5 = StackTest.countBalancedParanthesis(testParen_5);
+        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_5)+ ", total Count is: "+ count_5);
+
+        int count_6 = StackTest.countBalancedParanthesis(testParen_6);
+        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_6)+ ", total Count is: "+ count_6);
+
+        int count_7 = StackTest.countBalancedParanthesis(testParen_7);
+        System.out.println("Balanced?: " + StackTest.isBalancedParanthesis(testParen_7)+ ", total Count is: "+ count_7);
+
+//        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_1));
+//        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_2));
+//        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_3));
+//        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_4));
+//        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_5));
+//        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_6));
+//        System.out.println(BalanceExpressionEnhanced.isBalancedParenthesisEnhanced(testParen_7));
 
 
 //        System.out.println("a+b is: " + StackTest.infixToPostfix("a+b"));

@@ -1,4 +1,4 @@
-package com.techarha.training.algo;
+package com.techarha.training.sorting;
 
 public class QuickSort {
 

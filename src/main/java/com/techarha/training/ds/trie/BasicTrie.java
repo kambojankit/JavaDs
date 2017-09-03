@@ -10,8 +10,8 @@ public class BasicTrie {
             this.add(s,0);
         }
 
-        private static int getCharIndex(char c) {
-            return c - 'a';
+        private static int getCharIndex(char ch) {
+            return ch - 'a';
         }
 
         private Node getNode(char c) {
@@ -29,11 +29,12 @@ public class BasicTrie {
             char current = s.charAt(index);
             int currentCharIndex = getCharIndex(current);
 
-            if(getNode(current) == null) {
-                Node child = new Node();
+            Node child = getNode(current);
+            if(child == null) {
+                child = new Node();
                 setNode(current, child);
             }
-            add(s, index+ 1);
+            child.add(s, index+ 1);
         }
 
         public int findCount(String s, int index) {
@@ -46,7 +47,7 @@ public class BasicTrie {
                 return 0;
             }
 
-            return findCount(s, index + 1);
+            return child.findCount(s, index + 1);
         }
     }
 }
