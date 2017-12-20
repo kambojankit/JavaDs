@@ -5,8 +5,11 @@ import java.util.Map;
 
 public class Fibonacci {
     public static void main(String[] args) {
-        System.out.println(new Fibonacci().findFibonacciValueMemoise(7, new HashMap<Integer, Integer>()));
-        System.out.println(new Fibonacci().findFinbonacciMemoiseBottomUpBetter(7));
+        String data = "helloworld";
+        System.out.println(data.length());
+        System.out.println(data.charAt(1));
+//        System.out.println(new Fibonacci().findFibonacciValueMemoise(7, new HashMap<Integer, Integer>()));
+//        System.out.println(new Fibonacci().findFinbonacciMemoiseBottomUpBetter(7));
     }
 
     // basic solution
